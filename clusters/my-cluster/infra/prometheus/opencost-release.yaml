@@ -15,6 +15,6 @@ spec:
   values:
     prometheus:
       internal: 
-        url: prometheus-kube-prometheus-prometheus
-        namespace: default
+        serviceName: prometheus-kube-prometheus-prometheus
+        namespaceName: default
         port: 9090
