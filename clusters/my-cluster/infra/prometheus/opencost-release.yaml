@@ -15,7 +15,7 @@ spec:
   values:
     opencost:
       prometheus:
-        internal:
-          enabled: false
-        external:
-          url: http://prometheus-kube-prometheus-prometheus.default.svc.cluster.local:9090 
+        internal: 
+          url: prometheus-kube-prometheus-prometheus
+          namespace: default
+          port: 9090
