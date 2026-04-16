@@ -1,0 +1,22 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: opencost
+  namespace: default
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: opencost
+      sourceRef:
+        kind: HelmRepository
+        name: opencost
+        namespace: flux-system
+  values:
+    opencost:
+      prometheus:
+        internal:
+          enabled: false # On utilise ton Prometheus déjà installé
+        external:
+          url: http://prometheus-kube-prometheus-prometheus.default.svc.cluster.local:9090
+      # C'est ici qu'on injectera plus tard les prix OVH/Outscale
