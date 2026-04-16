@@ -13,8 +13,9 @@ spec:
         name: opencost
         namespace: flux-system
   values:
-    prometheus:
-      internal: 
-        serviceName: prometheus-kube-prometheus-prometheus
-        namespaceName: default
-        port: 9090
+    opencost:
+      prometheus:
+        internal: 
+          serviceName: prometheus-kube-prometheus-prometheus
+          namespaceName: default
+          port: 9090
