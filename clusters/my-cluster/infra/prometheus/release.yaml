@@ -7,9 +7,9 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: kube-prometheus
+      chart: kube-prometheus-stack
       sourceRef:
         kind: HelmRepository
-        name: bitnami
+        name: prometheus-community
         namespace: flux-system
       interval: 10m
