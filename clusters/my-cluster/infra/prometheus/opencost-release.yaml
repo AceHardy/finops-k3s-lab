@@ -32,3 +32,6 @@ spec:
       exporter:             # niveau 3 ← même niveau que prometheus
         extraEnv:
           CURRENCY: "EUR"
+      ui:
+        extraEnv:
+          CURRENCY: "EUR"    # ← l'UI a son propre container
