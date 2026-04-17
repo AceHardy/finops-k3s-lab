@@ -25,9 +25,10 @@ spec:
       opencost:
         customPricing:
           enabled: true
-          provider: custom
-          description: "Tarifs sur-mesure (OVH/Outscale)"
-          currencyCode: "EUR"
-          cpu: "0.015"
-          ram: "0.005"
-          storage: "0.0002"
+          # C'est ce bloc qui force l'écrasement des prix AWS par les tiens
+          costModel:
+            description: "Tarifs OVHcloud"
+            currencyCode: "EUR"
+            cpu: "0.015"
+            ram: "0.005"
+            storage: "0.0002"
