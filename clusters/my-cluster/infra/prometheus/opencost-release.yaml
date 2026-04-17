@@ -14,27 +14,30 @@ spec:
         namespace: flux-system
   values:
     opencost:
-      # 1. Connexion à la base de données de métriques
       prometheus:
-        external:
-          enabled: false
         internal:
           enabled: true
           serviceName: prometheus-kube-prometheus-prometheus
           namespaceName: default
           port: 9090
-          
-      # 2. Configuration du moteur de calcul (Backend)
+      
+      # Forcer le modèle de calcul en EUR
+      customPricing:
+        enabled: true
+        costModel:
+          currencyCode: "EUR"
+          description: "Tarifs FinOps"
+          cpu: "0.015"
+          ram: "0.005"
+          storage: "0.0002"
+
+      # Forcer le moteur de calcul (Backend) en EUR
       exporter:
-        extraEnv:
-          - name: CLOUD_PROVIDER
-            value: "OVH"
-          - name: OVH_SUBSIDIARY
-            value: "FR"
+          extraEnv:
           - name: CURRENCY
             value: "EUR"
-            
-      # 3. Configuration de l'interface graphique (Frontend)
+
+      # Forcer l'affichage (Frontend) en EUR
       ui:
         extraEnv:
           - name: CURRENCY
