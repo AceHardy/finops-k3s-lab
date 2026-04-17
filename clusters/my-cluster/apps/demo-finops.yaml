@@ -4,7 +4,7 @@ metadata:
   name: demo-finops-app
   namespace: default
 spec:
-  replicas: 3 # On demande 3 instances de l'application
+  replicas: 3
   selector:
     matchLabels:
       app: demo-finops
@@ -17,7 +17,6 @@ spec:
       - name: web
         image: nginx:alpine
         resources:
-          # C'est la section clé pour le FinOps !
           requests:
-            cpu: "500m"    # Demande 0.5 vCPU par instance
-            memory: "512Mi" # Demande ~0.5 Go RAM par instance
+            cpu: "2000m"     # Réservation massive : 2 vCPU
+            memory: "2Gi"    # Réservation massive : 2 Go de RAM
