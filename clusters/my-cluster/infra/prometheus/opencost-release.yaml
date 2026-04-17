@@ -20,24 +20,19 @@ spec:
           serviceName: prometheus-kube-prometheus-prometheus
           namespaceName: default
           port: 9090
-      
-      # Forcer le modèle de calcul en EUR
+          
+      # On force le mode manuel pour ignorer le fait que c'est un "Laptop"
       customPricing:
         enabled: true
+        provider: "custom"
         costModel:
+          description: "Tarifs FinOps Locaux"
           currencyCode: "EUR"
-          description: "Tarifs FinOps"
-          cpu: "0.015"
-          ram: "0.005"
+          CPU: "0.015"
+          RAM: "0.005"
           storage: "0.0002"
 
-      # Forcer le moteur de calcul (Backend) en EUR
-      exporter:
-          extraEnv:
-          - name: CURRENCY
-            value: "EUR"
-
-      # Forcer l'affichage (Frontend) en EUR
+      # On force la devise sur l'interface graphique
       ui:
         extraEnv:
           - name: CURRENCY
