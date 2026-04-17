@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-finops-app
+  namespace: default
+spec:
+  replicas: 3 # On demande 3 instances de l'application
+  selector:
+    matchLabels:
+      app: demo-finops
+  template:
+    metadata:
+      labels:
+        app: demo-finops
+    spec:
+      containers:
+      - name: web
+        image: nginx:alpine
+        resources:
+          # C'est la section clé pour le FinOps !
+          requests:
+            cpu: "500m"    # Demande 0.5 vCPU par instance
+            memory: "512Mi" # Demande ~0.5 Go RAM par instance
