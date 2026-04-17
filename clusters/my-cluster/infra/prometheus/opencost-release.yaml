@@ -19,3 +19,15 @@ spec:
           serviceName: prometheus-kube-prometheus-prometheus
           namespaceName: default
           port: 9090
+         
+# 2. Configuration FinOps OpenCost (Niveau racine)
+
+      opencost:
+        customPricing:
+          enabled: true
+          provider: custom
+          description: "Tarifs sur-mesure (OVH/Outscale)"
+          currencyCode: "EUR"
+          cpu: "0.015"
+          ram: "0.005"
+          storage: "0.0002"
