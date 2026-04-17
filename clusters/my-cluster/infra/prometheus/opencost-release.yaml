@@ -14,21 +14,21 @@ spec:
         namespace: flux-system
   values:
     opencost:
-      prometheus:
+      prometheus:           # niveau 3
         internal:
           serviceName: prometheus-kube-prometheus-prometheus
           namespaceName: default
           port: 9090
 
-        customPricing:
-          enabled: true
-          provider: "default"      # ou "ovh" si disponible
-          costModel:
-            description: "Tarifs OVHcloud / Outscale"
-            CPU: "0.015"
-            RAM: "0.005"
-            storage: "0.0002"
+      customPricing:        # niveau 3 ← même niveau que prometheus
+        enabled: true
+        provider: "default"
+        costModel:
+          description: "Tarifs OVHcloud / Outscale"
+          CPU: "0.015"
+          RAM: "0.005"
+          storage: "0.0002"
 
-        exporter:
-          extraEnv:
-            CURRENCY: "EUR"        # ← format map, pas liste !
+      exporter:             # niveau 3 ← même niveau que prometheus
+        extraEnv:
+          CURRENCY: "EUR"
