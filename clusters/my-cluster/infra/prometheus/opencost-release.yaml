@@ -20,17 +20,15 @@ spec:
           namespaceName: default
           port: 9090
 
-      # Configuration FinOps - custom pricing OVH / Outscale
-      customPricing:
-        enabled: true
-        CostModel:
-          description: "Tarifs OVHcloud"
-          currency: "EUR"        # ← currencyCode → currency
-          CPU: "0.015"
-          RAM: "0.005"
-          storage: "0.0002"
+        customPricing:
+          enabled: true
+          provider: "default"      # ou "ovh" si disponible
+          costModel:
+            description: "Tarifs OVHcloud / Outscale"
+            CPU: "0.015"
+            RAM: "0.005"
+            storage: "0.0002"
 
-      exporter:
-        extraEnv:
-          - name: CURRENCY       # ← manquait
-            value: "EUR"
+        exporter:
+          extraEnv:
+            CURRENCY: "EUR"        # ← format map, pas liste !
