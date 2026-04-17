@@ -20,19 +20,23 @@ spec:
           serviceName: prometheus-kube-prometheus-prometheus
           namespaceName: default
           port: 9090
-          
-      # On force le mode manuel pour ignorer le fait que c'est un "Laptop"
+      
+      # Configuration manuelle forcée
       customPricing:
         enabled: true
-        provider: "custom"
         costModel:
-          description: "Tarifs FinOps Locaux"
+          description: "Mode Lab Local"
           currencyCode: "EUR"
-          CPU: "0.015"
-          RAM: "0.005"
+          # On définit des prix par défaut pour n'importe quel CPU/RAM détecté
+          cpu: "0.015"
+          ram: "0.005"
           storage: "0.0002"
 
-      # On force la devise sur l'interface graphique
+      # Variables d'environnement pour l'interface
+      exporter:
+        extraEnv:
+          - name: CURRENCY
+            value: "EUR"
       ui:
         extraEnv:
           - name: CURRENCY
