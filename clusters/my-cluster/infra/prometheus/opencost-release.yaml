@@ -14,26 +14,28 @@ spec:
         namespace: flux-system
   values:
     opencost:
+      # 1. Connexion à la base de données de métriques
       prometheus:
+        external:
+          enabled: false
         internal:
+          enabled: true
           serviceName: prometheus-kube-prometheus-prometheus
           namespaceName: default
           port: 9090
-
-      customPricing:
-        enabled: true
-        provider: "default"
-        costModel:
-          description: "Tarifs OVHcloud / Outscale"
-          CPU: "0.015"
-          RAM: "0.005"
-          storage: "0.0002"
-
+          
+      # 2. Configuration du moteur de calcul (Backend)
       exporter:
         extraEnv:
-          CURRENCY: "EUR"
-
-      ui:                        # ← même niveau que exporter
+          - name: CLOUD_PROVIDER
+            value: "OVH"
+          - name: OVH_SUBSIDIARY
+            value: "FR"
+          - name: CURRENCY
+            value: "EUR"
+            
+      # 3. Configuration de l'interface graphique (Frontend)
+      ui:
         extraEnv:
           - name: CURRENCY
             value: "EUR"
