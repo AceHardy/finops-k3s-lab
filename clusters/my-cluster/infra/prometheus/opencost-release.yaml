@@ -23,7 +23,7 @@ spec:
       # Configuration FinOps - custom pricing OVH / Outscale
       customPricing:
         enabled: true
-        costModel:
+        CostModel:
           description: "Tarifs OVHcloud"
           currency: "EUR"        # ← currencyCode → currency
           CPU: "0.015"
