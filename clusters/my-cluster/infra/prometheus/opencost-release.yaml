@@ -14,13 +14,13 @@ spec:
         namespace: flux-system
   values:
     opencost:
-      prometheus:           # niveau 3
+      prometheus:
         internal:
           serviceName: prometheus-kube-prometheus-prometheus
           namespaceName: default
           port: 9090
 
-      customPricing:        # niveau 3 ← même niveau que prometheus
+      customPricing:
         enabled: true
         provider: "default"
         costModel:
@@ -29,10 +29,11 @@ spec:
           RAM: "0.005"
           storage: "0.0002"
 
-      exporter:             # niveau 3 ← même niveau que prometheus
+      exporter:
         extraEnv:
           CURRENCY: "EUR"
-    ui:
+
+      ui:                        # ← même niveau que exporter
         extraEnv:
-          - name: CURRENCY      # format liste ✅
+          - name: CURRENCY
             value: "EUR"
