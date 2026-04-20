@@ -14,12 +14,11 @@ spec:
         namespace: flux-system
   values:
     opencost:
-      # --- LE BLOC EST MAINTENANT AU BON ENDROIT ---
       metrics:
         serviceMonitor:
           enabled: true
           additionalLabels:
-            release: prometheus # Le label secret pour que Prometheus l'accepte
+            release: prometheus
             
       prometheus:
         internal:
@@ -33,9 +32,10 @@ spec:
         provider: "custom"
         costModel:
           description: "Mode Lab Local"
-          CPU: "0.015"
-          RAM: "0.005"
-          storage: "0.0002"
+          # Tarifs mensuels (Prix horaire x 730h)
+          CPU: "10.95"      # (0.015 €/h)
+          RAM: "3.65"       # (0.005 €/h)
+          storage: "0.146"  # (0.0002 €/h)
 
       exporter:
         extraEnv:
