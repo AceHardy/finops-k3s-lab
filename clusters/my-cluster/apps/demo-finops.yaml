@@ -18,5 +18,5 @@ spec:
         image: nginx:alpine
         resources:
           requests:
-            cpu: "2000m"     # Réservation massive : 2 vCPU
-            memory: "2Gi"    # Réservation massive : 2 Go de RAM
+            cpu: "100m"     # Au lieu de 2000m
+            memory: "128Mi" # Au lieu de 2Gi
