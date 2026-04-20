@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: finops-budget-limit
+  namespace: default
+spec:
+  hard:
+    # Le plafond strict pour l'ensemble du namespace 'default'
+    requests.cpu: "4"      # Max 4 vCPU au total
+    requests.memory: "4Gi" # Max 4 Go de RAM au total
