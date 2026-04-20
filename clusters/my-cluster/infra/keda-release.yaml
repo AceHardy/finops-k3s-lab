@@ -1,4 +1,5 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+# --- LA CORRECTION EST ICI (v1 au lieu de v1beta2) ---
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: kedacore
