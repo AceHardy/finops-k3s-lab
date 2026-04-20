@@ -13,6 +13,11 @@ spec:
         name: opencost
         namespace: flux-system
   values:
+    # --- LA CONNEXION MANQUANTE ---
+    metrics:
+      serviceMonitor:
+        enabled: true
+        
     opencost:
       prometheus:
         internal:
@@ -20,7 +25,7 @@ spec:
           serviceName: prometheus-kube-prometheus-prometheus
           namespaceName: default
           port: 9090
-      
+          
       customPricing:
         enabled: true
         provider: "custom"
