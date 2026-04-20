@@ -62,8 +62,8 @@ spec:
     spec:
       containers:
       - name: stress-test
-        image: progrium/stress
-        args: ["--cpu", "1", "--timeout", "3600s"] # Fait tourner le CPU à fond
+        image: alpine
+        command: ["/bin/sh", "-c", "while true; do :; done"] # Boucle mathématique infinie
         resources:
           requests:
             cpu: "500m"
