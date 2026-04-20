@@ -1,0 +1,19 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: sleep-nginx
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: demo-finops-app
+  minReplicaCount: 0 # Autorise la destruction totale
+  maxReplicaCount: 3
+  triggers:
+  - type: cron
+    metadata:
+      timezone: Europe/Paris # Aligné sur ton fuseau horaire
+      start: "0 20 * * *"    # Déclenchement à 20h00
+      end: "0 8 * * *"       # Fin du couvre-feu à 08h00
+      desiredReplicas: "0"   # Combien de pods on veut pendant cette période
