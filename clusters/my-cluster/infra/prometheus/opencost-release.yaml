@@ -13,12 +13,14 @@ spec:
         name: opencost
         namespace: flux-system
   values:
-    # --- LA CONNEXION MANQUANTE ---
-    metrics:
-      serviceMonitor:
-        enabled: true
-        
     opencost:
+      # --- LE BLOC EST MAINTENANT AU BON ENDROIT ---
+      metrics:
+        serviceMonitor:
+          enabled: true
+          additionalLabels:
+            release: prometheus # Le label secret pour que Prometheus l'accepte
+            
       prometheus:
         internal:
           enabled: true
