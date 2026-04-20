@@ -8,12 +8,12 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: demo-finops-app
-  minReplicaCount: 0
+  minReplicaCount: 0       # Le nombre de pods la nuit (hors de la plage d'ouverture)
   maxReplicaCount: 3
   triggers:
   - type: cron
     metadata:
       timezone: Europe/Paris
-      start: "26 12 * * *"
-      end: "0 8 * * *"
-      desiredReplicas: "0"
+      start: "0 8 * * *"    # Début de la journée de travail (08h00)
+      end: "19 14 * * *"     # Fin de la journée de travail (20h00)
+      desiredReplicas: "3"  # Le nombre de pods souhaités la journée
